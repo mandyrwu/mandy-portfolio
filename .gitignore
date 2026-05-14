@@ -1,0 +1,11 @@
+.next/
+node_modules/
+.env
+.env.local
+
+.cursor/
+
+.DS_Store
+.vscode/
+
+/data/
