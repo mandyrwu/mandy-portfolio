@@ -90,6 +90,15 @@ export default function Home() {
                   </span>
                 </div>
               </article>
+              <ProjectCard
+                href="/project/cards-refactor"
+                tag="DESIGN SYSTEM"
+                tagClassName="text-card-cds-label"
+                title="Cards Refactor"
+                description="Rebuilding a foundational component family in the Coinbase Design System."
+                className="bg-card-cds sm:col-span-2"
+                delay={520}
+              />
             </div>
           </div>
         </section>

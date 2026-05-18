@@ -53,6 +53,16 @@ export const SIGN_IMAGES = [
   "https://framerusercontent.com/images/V47xUrDbdA372STZaFET8RSolHU.png",
 ] as const;
 
+export const CARDS_IMAGES = [
+  "/images/cards-refactor/01-cover.jpg",
+  "/images/cards-refactor/02-current-state.jpg",
+  "/images/cards-refactor/03-gap.jpg",
+  "/images/cards-refactor/04-four-cards.jpg",
+  "/images/cards-refactor/05-states.jpg",
+  "/images/cards-refactor/06-media-examples.jpg",
+  "/images/cards-refactor/07-feedback.jpg",
+] as const;
+
 export const HONEY_IMAGES = [
   "https://framerusercontent.com/images/66BsUXsap4Zw44Milhx1WcEMnU.png",
   "https://framerusercontent.com/images/6m6KQfZIMg9cfdk316yKoNR6rWY.png",

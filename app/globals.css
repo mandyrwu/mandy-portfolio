@@ -12,6 +12,8 @@
   --card-honey-label: #b48a32;
   --card-coinbase: #eceae6;
   --card-coinbase-label: #6b6560;
+  --card-cds: #e8e5f0;
+  --card-cds-label: #5a4678;
 }
 
 @theme inline {
@@ -26,6 +28,8 @@
   --color-card-honey-label: var(--card-honey-label);
   --color-card-coinbase: var(--card-coinbase);
   --color-card-coinbase-label: var(--card-coinbase-label);
+  --color-card-cds: var(--card-cds);
+  --color-card-cds-label: var(--card-cds-label);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
