@@ -1,92 +1,147 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Dancing_Script } from "next/font/google";
-import { AboutScrapbook } from "@/components/about-scrapbook";
-import { AmbientBackground } from "@/components/ambient-background";
-import { ContactSection } from "@/components/contact-section";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { UW } from "@/lib/site-constants";
-
-const handwriting = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-});
+import Footer from "@/components/footer";
+import PhotoGallery from "@/components/photo-gallery";
 
 export const metadata: Metadata = {
-  title: "Hello, I'm Mandy!",
+  title: "About — Mandy Wu",
   description:
-    "Mandy Wu (she/her) is a product designer in Seattle, studying Human-Centered Design & Engineering at the University of Washington.",
+    "Product designer crafting systems-first experiences. Previously at Coinbase.",
 };
+
+const experience = [
+  { role: "Product Designer", company: "Coinbase", years: "2025–26", href: "https://www.coinbase.com/" },
+  { role: "Product Designer", company: "UniversalAGI", years: "2025", href: "https://www.universalagi.com/" },
+  { role: "Product Design Intern", company: "Coinbase", years: "2024", href: "https://www.coinbase.com/" },
+  { role: "User Experience Designer", company: "Nora Music", years: "2023–24", href: "https://noramusic.com/" },
+];
+
+const community = [
+  { role: "Undergraduate Teaching Assistant", company: "UW iSchool", years: "2023–25", href: "https://ischool.uw.edu/" },
+  { role: "Graphic Design Lead", company: "Society of Women Engineers", years: "2022–24", href: "https://sweuw.org/" },
+  { role: "Undergraduate Researcher", company: "KidsTeam", years: "2022–23", href: "https://www.kidsteam.ischool.uw.edu/" },
+  { role: "Designer", company: "Design for America", years: "2022–23", href: "https://www.designforamerica.org/" },
+];
+
+
+function ExperienceRow({
+  role,
+  company,
+  years,
+  href,
+}: {
+  role: string;
+  company: string;
+  years: string;
+  href: string;
+}) {
+  return (
+    <div
+      className="flex items-center justify-between w-full"
+      style={{ gap: "16px" }}
+    >
+      <span
+        style={{
+          fontSize: "var(--fs-body)",
+          fontWeight: 300,
+          color: "var(--c-text-primary)",
+          flexShrink: 1,
+          minWidth: 0,
+        }}
+      >
+        {role}
+      </span>
+      <div className="flex items-center shrink-0" style={{ gap: "16px" }}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            fontSize: "var(--fs-body)",
+            fontWeight: 300,
+            color: "var(--c-text-primary)",
+            textDecoration: "none",
+            backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
+            backgroundSize: "4px 3px",
+            backgroundPosition: "0 100%",
+            backgroundRepeat: "repeat-x",
+            paddingBottom: "3px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {company}
+        </a>
+        <span
+          style={{
+            fontSize: "var(--fs-body)",
+            fontWeight: 300,
+            color: "var(--c-text-faint)",
+            whiteSpace: "nowrap",
+            minWidth: "64px",
+            textAlign: "right",
+          }}
+        >
+          {years}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function AboutPage() {
   return (
-    <div className="relative z-[2] flex min-h-full flex-1 flex-col">
-      <AmbientBackground />
-      <SiteHeader activePage="about" />
+    <main className="min-h-screen">
+      {/* Top padding clears the fixed nav */}
+      <div className="pt-28" />
 
-      <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-5 pb-16 pt-12 sm:px-8 sm:pb-20 sm:pt-16 lg:px-12 lg:pt-20">
-        <div className="max-w-2xl">
-          <h1
-            className={`${handwriting.className} animate-fade-up text-[clamp(2.5rem,7vw,3.75rem)] font-semibold leading-[1.15] text-foreground`}
-            style={{ animationDelay: "60ms" }}
+      {/* Interactive photo gallery */}
+      <section style={{ maxWidth: "var(--max-content-width)", margin: "40px auto 0", padding: "0 24px", overflow: "visible" }}>
+        <PhotoGallery />
+      </section>
+
+      {/* Experience + Community sections */}
+      <section
+        className="mx-auto px-6 flex flex-col"
+        style={{ maxWidth: "640px", marginTop: "24px", gap: "40px" }}
+      >
+        {/* Experience */}
+        <div className="flex flex-col" style={{ gap: "16px" }}>
+          <span
+            style={{
+              fontSize: "var(--fs-body)",
+              fontWeight: 300,
+              color: "var(--c-text-faint)",
+            }}
           >
-            Nice to meet you!
-          </h1>
-
-          <div className="mt-10 space-y-7 text-[1.05rem] leading-relaxed text-muted sm:text-lg">
-            <p
-              className="animate-fade-up"
-              style={{ animationDelay: "120ms" }}
-            >
-              My name is{" "}
-              <strong className="font-semibold text-foreground">Mandy Wu</strong>{" "}
-              (she/her), and I&apos;m a product designer based in{" "}
-              <em className="text-foreground/90">Seattle, Washington</em>
-              .
-            </p>
-            <p
-              className="animate-fade-up"
-              style={{ animationDelay: "190ms" }}
-            >
-              I&apos;m currently studying{" "}
-              <Link
-                href={UW}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-foreground underline decoration-black/[0.18] underline-offset-[5px] transition-colors hover:decoration-foreground"
-              >
-                Human-centered Design and Engineering at the University of
-                Washington
-              </Link>{" "}
-              where I&apos;m learning to apply design principles to create
-              functional and delightful solutions to everyday problems.
-            </p>
-            <p
-              className="animate-fade-up"
-              style={{ animationDelay: "260ms" }}
-            >
-              In my free time, I like to roam around the city, create
-              experimental recipes, and daydream :)
-            </p>
-            <p
-              className="animate-fade-up font-medium text-foreground/90"
-              style={{ animationDelay: "330ms" }}
-            >
-              More fun things to come :)
-            </p>
+            Experience
+          </span>
+          <div className="flex flex-col" style={{ gap: "16px" }}>
+            {experience.map((item, i) => (
+              <ExperienceRow key={i} {...item} />
+            ))}
           </div>
         </div>
 
-        <AboutScrapbook animationBaseDelay={400} />
+        {/* Community & Leadership */}
+        <div className="flex flex-col" style={{ gap: "16px" }}>
+          <span
+            style={{
+              fontSize: "var(--fs-body)",
+              fontWeight: 300,
+              color: "var(--c-text-faint)",
+            }}
+          >
+            Community &amp; Leadership
+          </span>
+          <div className="flex flex-col" style={{ gap: "16px" }}>
+            {community.map((item, i) => (
+              <ExperienceRow key={i} {...item} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <ContactSection
-          className="mt-20 sm:mt-24 lg:mt-28"
-          animationDelayMs={520}
-        />
-      </main>
-
-      <SiteFooter />
-    </div>
+      <div style={{ height: "80px" }} />
+      <Footer />
+    </main>
   );
 }

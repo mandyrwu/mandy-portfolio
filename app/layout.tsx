@@ -1,35 +1,35 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Bad_Script } from "next/font/google";
 import "./globals.css";
+import Nav from "@/components/nav";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "600"],
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const badScript = Bad_Script({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bad-script",
 });
 
 export const metadata: Metadata = {
   title: "Mandy Wu — Product Designer",
   description:
-    "Product designer crafting delightful, systems-first solutions. Previously at Coinbase; studying Human-Centered Design & Engineering at the University of Washington.",
+    "Product designer crafting systems-first experiences. Previously at Coinbase.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
-    >
-      <body className="relative min-h-full flex flex-col font-sans">
-        <div className="grain" aria-hidden />
+    <html lang="en" className={`${inter.variable} ${badScript.variable}`}>
+      <body className="font-sans">
+        <Nav />
         {children}
       </body>
     </html>
