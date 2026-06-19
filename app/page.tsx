@@ -129,7 +129,7 @@ export default function HomePage() {
                 backdropFilter: "blur(20px)",
               }}
             >
-              {/* Image placeholder — fill with next/image when assets are ready */}
+              {/* Card image */}
               <div
                 style={{
                   width: "100%",
@@ -137,8 +137,18 @@ export default function HomePage() {
                   borderRadius: "var(--r-image)",
                   backgroundColor: project.imagePlaceholderColor,
                   flexShrink: 0,
+                  overflow: "hidden",
                 }}
-              />
+              >
+                {project.coverImage && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={project.coverImage}
+                    alt={project.name}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                )}
+              </div>
 
               {/*
                 Info row — space-between layout exactly as in Figma:

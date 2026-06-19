@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function ResumePage() {
   return (
     <main className="min-h-screen" style={{ backgroundColor: "var(--c-bg)" }}>
-      <div style={{ height: "120px" }} />
+      <div style={{ height: "160px" }} />
 
       <div
         className="mx-auto px-6"

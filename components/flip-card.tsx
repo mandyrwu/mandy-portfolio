@@ -93,7 +93,7 @@ export default function FlipCard({
                 backgroundColor: "#FFFFFF",
                 border: "1px solid #E0E0E0",
                 borderRadius: "10px",
-                padding: "28px 26px",
+                padding: "32px 20px 20px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -112,18 +112,21 @@ export default function FlipCard({
                 <rect width="100%" height="100%" filter="url(#paper-noise)" opacity="0.20" />
               </svg>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", position: "relative" }}>
-                <p style={{ fontFamily: "var(--font-bad-script), cursive", fontSize: "21px", color: "#1A1A1A" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "16px", position: "relative" }}>
+                <p style={{ fontFamily: "var(--font-bad-script), cursive", fontSize: "20px", color: "var(--c-text-primary)" }}>
                   Hey there,
                 </p>
-                <p style={{ fontWeight: 300, fontSize: "13px", lineHeight: 1.75, color: "#444444" }}>
-                  Welcome to my portfolio! I&apos;m Mandy, a product designer based in Seattle, Washington. As a kid, I was always sneaking out of PE to draw and paint, and that love for creativity has stuck with me ever since. It led me to study Human-Centered Design and Engineering at the University of Washington, and most recently, to designing at Coinbase.
+                <p style={{ fontWeight: 300, fontSize: "14px", lineHeight: "20px", color: "var(--c-text-primary)" }}>
+                  Welcome to my portfolio!
                 </p>
-                <p style={{ fontWeight: 300, fontSize: "13px", lineHeight: 1.75, color: "#444444" }}>
+                <p style={{ fontWeight: 300, fontSize: "14px", lineHeight: "20px", color: "var(--c-text-primary)" }}>
+                  I&apos;m Mandy, a product designer based in Seattle, Washington. As a kid, I was always sneaking out of PE to draw and paint, and that love for creativity has stuck with me ever since. It led me to study Human-Centered Design and Engineering at the University of Washington, and most recently, to designing at Coinbase.
+                </p>
+                <p style={{ fontWeight: 300, fontSize: "14px", lineHeight: "20px", color: "var(--c-text-primary)" }}>
                   I care deeply about thinking in systems at scale and bringing real intentionality to every design decision. Outside of work, I enjoy roaming the city, experimenting in the kitchen, and daydreaming.
                 </p>
               </div>
-              <p style={{ fontFamily: "var(--font-bad-script), cursive", fontSize: "18px", color: "#1A1A1A", textAlign: "right", position: "relative" }}>
+              <p style={{ fontFamily: "var(--font-bad-script), cursive", fontSize: "20px", color: "var(--c-text-primary)", textAlign: "right", position: "relative" }}>
                 Xoxo,<br />Mandy
               </p>
             </div>
