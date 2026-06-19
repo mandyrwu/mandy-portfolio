@@ -17,7 +17,7 @@ const experience = [
 
 const community = [
   { role: "Undergraduate Teaching Assistant", company: "UW iSchool", years: "2023–25", href: "https://ischool.uw.edu/" },
-  { role: "Graphic Design Lead", company: "Society of Women Engineers", years: "2022–24", href: "https://sweuw.org/" },
+  { role: "Graphic Design Lead", company: "Society of Women Engineers", shortName: "SWE", years: "2022–24", href: "https://sweuw.org/" },
   { role: "Undergraduate Researcher", company: "KidsTeam", years: "2022–23", href: "https://www.kidsteam.ischool.uw.edu/" },
   { role: "Designer", company: "Design for America", years: "2022–23", href: "https://www.designforamerica.org/" },
 ];
@@ -26,11 +26,13 @@ const community = [
 function ExperienceRow({
   role,
   company,
+  shortName,
   years,
   href,
 }: {
   role: string;
   company: string;
+  shortName?: string;
   years: string;
   href: string;
 }) {
@@ -68,7 +70,12 @@ function ExperienceRow({
             whiteSpace: "nowrap",
           }}
         >
-          {company}
+          {shortName ? (
+            <>
+              <span className="hidden sm:inline">{company}</span>
+              <span className="sm:hidden">{shortName}</span>
+            </>
+          ) : company}
         </a>
         <span
           style={{

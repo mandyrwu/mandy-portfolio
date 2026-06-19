@@ -20,43 +20,48 @@ const PHOTOS = [
 
 const CENTER = { src: "/images/about/large-center.png", top: 117.25, left: 360.59, width: 399.85, rotation: 0.224, zIndex: 375 };
 
+
 export default function PhotoGallery() {
   return (
-    <div style={{ position: "relative", height: "820px" }}>
-      {PHOTOS.map(({ id, src, top, left, width, rotation, zIndex }) => (
-        <div
-          key={id}
-          style={{
-            position: "absolute",
-            top,
-            left,
-            backgroundColor: "#FFFFFF",
-            padding: "8px",
-            border: "1px solid #E0E0E0",
-            borderRadius: "10px",
-            zIndex,
-            transform: `rotate(${rotation}deg)`,
-            transformOrigin: "center center",
-          }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={src}
-            alt=""
-            style={{ width: `${width}px`, height: "auto", display: "block", borderRadius: "4px" }}
-          />
-        </div>
-      ))}
+    <>
+      <style>{`
+        .gallery-desktop { display: block; }
+        .gallery-mobile  { display: none;  }
+        @media (max-width: 640px) {
+          .gallery-desktop { display: none;  }
+          .gallery-mobile  { display: block; }
+        }
+      `}</style>
 
-      <FlipCard
-        src={CENTER.src}
-        alt="Mandy Wu"
-        width={CENTER.width}
-        top={CENTER.top}
-        left={CENTER.left}
-        zIndex={CENTER.zIndex}
-        rotation={CENTER.rotation}
-      />
-    </div>
+      {/* ── Desktop gallery ── */}
+      <div className="gallery-desktop" style={{ position: "relative", height: "820px" }}>
+        {PHOTOS.map(({ id, src, top, left, width, rotation, zIndex }) => (
+          <div
+            key={id}
+            style={{
+              position: "absolute",
+              top,
+              left,
+              backgroundColor: "#FFFFFF",
+              padding: "8px",
+              border: "1px solid #E0E0E0",
+              borderRadius: "10px",
+              zIndex,
+              transform: `rotate(${rotation}deg)`,
+              transformOrigin: "center center",
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={src} alt="" style={{ width: `${width}px`, height: "auto", display: "block", borderRadius: "4px" }} />
+          </div>
+        ))}
+        <FlipCard src={CENTER.src} alt="Mandy Wu" width={CENTER.width} top={CENTER.top} left={CENTER.left} zIndex={CENTER.zIndex} rotation={CENTER.rotation} />
+      </div>
+
+      {/* ── Mobile gallery ── */}
+      <div className="gallery-mobile">
+        <FlipCard src={CENTER.src} alt="Mandy Wu" fullWidth />
+      </div>
+    </>
   );
 }

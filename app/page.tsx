@@ -39,6 +39,10 @@ export default function HomePage() {
       <style>{`
         .card-hover { transition: transform 0.2s ease; }
         .card-hover:hover { transform: scale(0.97); }
+        @media (max-width: 640px) {
+          .card-tags-left { flex-direction: column !important; align-items: flex-start !important; }
+          .card-tags-right { flex-direction: column !important; align-items: flex-end !important; }
+        }
       `}</style>
       {/* Spacer below fixed nav (nav sits at top:40px, ~44px tall → ~84px bottom) */}
       <div style={{ height: "200px" }} />
@@ -164,7 +168,7 @@ export default function HomePage() {
                 }}
               >
                 {/* Left group */}
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                <div className="card-tags-left" style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
                   <Tag
                     bg={project.titleColor}
                     textColor="#FFFFFF"
@@ -176,7 +180,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Right group */}
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+                <div className="card-tags-right" style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
                   {project.rightTags.map((tag) => (
                     <Tag key={tag} fontWeight={400}>{tag}</Tag>
                   ))}

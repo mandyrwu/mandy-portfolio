@@ -57,6 +57,18 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <main className="min-h-screen">
+      <style>{`
+        @media (max-width: 640px) {
+          .cs-img-row { flex-direction: column !important; }
+          .cs-img-row img { flex: none !important; width: 100% !important; }
+          .cs-img-row > div { flex: none !important; width: 100% !important; min-width: 0 !important; }
+          .cs-img-masonry { grid-template-columns: 1fr !important; }
+          .cs-img-masonry-right { height: auto !important; }
+          .cs-img-masonry-right img { height: auto !important; object-fit: initial !important; }
+          .cs-img-panel-row { flex-direction: column !important; }
+          .cs-img-panel-row img { flex: none !important; width: 100% !important; }
+        }
+      `}</style>
       <div style={{ height: "160px" }} />
 
       <div
@@ -114,7 +126,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
 
           {/* Two side-by-side image cards */}
-          <div style={{ display: "flex", gap: "23px" }}>
+          <div className="cs-img-row" style={{ display: "flex", gap: "23px" }}>
             {[0, 1].map((idx) => {
               const src = project.headerImages?.[idx];
               return (
@@ -235,14 +247,14 @@ export default async function CaseStudyPage({ params }: Props) {
                     {para}
                   </p>
                 ))}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "12px", alignItems: "stretch" }}>
+                <div className="cs-img-masonry" style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "12px", alignItems: "stretch" }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={topLeft} alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: "16px" }} />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={bottomLeft} alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: "16px" }} />
                   </div>
-                  <div style={{ overflow: "hidden", borderRadius: "16px" }}>
+                  <div className="cs-img-masonry-right" style={{ overflow: "hidden", borderRadius: "16px" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={right} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                   </div>
@@ -251,7 +263,7 @@ export default async function CaseStudyPage({ params }: Props) {
             ))}
             {area.imageRows?.map((row, rowIdx) => (
               <Fragment key={rowIdx}>
-                <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
+                <div className="cs-img-row" style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
                   {row.map((src, imgIdx) => (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -288,7 +300,7 @@ export default async function CaseStudyPage({ params }: Props) {
               <Fragment key={i}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={panel.full} alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: "16px" }} />
-                <div style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
+                <div className="cs-img-panel-row" style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
                   {panel.row.map((src, j) => (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img

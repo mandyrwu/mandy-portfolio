@@ -24,7 +24,7 @@ export default function ResumePage() {
           }}
         >
           <iframe
-            src="/images/about/resume.pdf"
+            src="/images/about/resume.pdf#view=FitH"
             style={{
               width: "100%",
               height: "calc(100vh - 260px)",
