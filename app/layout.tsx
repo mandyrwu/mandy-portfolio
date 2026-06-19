@@ -19,6 +19,19 @@ export const metadata: Metadata = {
   title: "Mandy Wu — Product Designer",
   description:
     "Product designer crafting systems-first experiences. Previously at Coinbase.",
+  openGraph: {
+    title: "Mandy Wu — Product Designer",
+    description:
+      "Product designer crafting systems-first experiences. Previously at Coinbase.",
+    images: [{ url: "/images/about/preview.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mandy Wu — Product Designer",
+    description:
+      "Product designer crafting systems-first experiences. Previously at Coinbase.",
+    images: ["/images/about/preview.png"],
+  },
 };
 
 export default function RootLayout({
