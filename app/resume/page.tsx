@@ -23,16 +23,15 @@ export default function ResumePage() {
             boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
           }}
         >
-          <iframe
-            src="/images/about/resume.pdf#view=FitH"
+          <embed
+            src="/images/about/resume.pdf#view=FitH&zoom=page-width"
+            type="application/pdf"
             style={{
               width: "100%",
               height: "calc(100vh - 260px)",
-              border: "none",
               display: "block",
               minHeight: "600px",
             }}
-            title="Mandy Wu Resume"
           />
         </div>
       </div>

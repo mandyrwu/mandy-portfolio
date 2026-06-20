@@ -4,6 +4,19 @@ import { useState } from "react";
 
 const PAD = 8;
 
+const WIGGLE_CSS = `
+  @keyframes hint-wiggle {
+    0%   { transform: rotate(0deg); }
+    2%   { transform: rotate(-2.5deg); }
+    5%   { transform: rotate(2.5deg); }
+    7%   { transform: rotate(-1.5deg); }
+    9%   { transform: rotate(1.5deg); }
+    11%  { transform: rotate(-0.5deg); }
+    13%  { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+  }
+`;
+
 export default function FlipCard({
   src,
   alt,
@@ -42,12 +55,17 @@ export default function FlipCard({
         alt={alt ?? ""}
         style={
           fullWidth
-            ? { width: "100%", height: "auto", display: "block", borderRadius: "4px" }
+            ? { width: "100%", height: "340px", objectFit: "cover", objectPosition: "center top", display: "block", borderRadius: "4px" }
             : { width: `${width}px`, height: "auto", display: "block", borderRadius: "4px" }
         }
       />
     </div>
   );
+
+  const scriptSize = "20px";
+  const textGap = fullWidth ? "12px" : "16px";
+  const bodySize = fullWidth ? "12px" : "14px";
+  const bodyLineHeight = fullWidth ? "16px" : "20px";
 
   const back = (
     <div
@@ -60,7 +78,7 @@ export default function FlipCard({
         backgroundColor: "#FFFFFF",
         border: "1px solid #E0E0E0",
         borderRadius: "10px",
-        padding: "16px 20px 20px",
+        padding: "16px 20px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -75,21 +93,21 @@ export default function FlipCard({
         <rect width="100%" height="100%" filter="url(#paper-noise)" opacity="0.20" />
       </svg>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", position: "relative" }}>
-        <p style={{ fontFamily: "var(--font-bad-script), cursive", fontSize: "20px", color: "var(--c-text-primary)" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: textGap, position: "relative" }}>
+        <p style={{ fontFamily: "var(--font-bad-script), cursive", fontSize: scriptSize, color: "var(--c-text-primary)" }}>
           Hey there,
         </p>
-        <p style={{ fontWeight: 300, fontSize: "14px", lineHeight: "20px", color: "var(--c-text-primary)" }}>
+        <p style={{ fontWeight: 300, fontSize: bodySize, lineHeight: bodyLineHeight, color: "var(--c-text-primary)" }}>
           Welcome to my portfolio!
         </p>
-        <p style={{ fontWeight: 300, fontSize: "14px", lineHeight: "20px", color: "var(--c-text-primary)" }}>
+        <p style={{ fontWeight: 300, fontSize: bodySize, lineHeight: bodyLineHeight, color: "var(--c-text-primary)" }}>
           I&apos;m Mandy, a product designer based in Seattle, Washington. As a kid, I was always sneaking out of PE to draw and paint, and that love for creativity has stuck with me ever since. It led me to study Human-Centered Design and Engineering at the University of Washington, and most recently, to designing at Coinbase.
         </p>
-        <p style={{ fontWeight: 300, fontSize: "14px", lineHeight: "20px", color: "var(--c-text-primary)" }}>
+        <p style={{ fontWeight: 300, fontSize: bodySize, lineHeight: bodyLineHeight, color: "var(--c-text-primary)" }}>
           I care deeply about thinking in systems at scale and bringing real intentionality to every design decision. Outside of work, I enjoy roaming the city, experimenting in the kitchen, and daydreaming.
         </p>
       </div>
-      <p style={{ fontFamily: "var(--font-bad-script), cursive", fontSize: "20px", color: "var(--c-text-primary)", textAlign: "right", position: "relative" }}>
+      <p style={{ fontFamily: "var(--font-bad-script), cursive", fontSize: scriptSize, color: "var(--c-text-primary)", textAlign: "right", position: "relative" }}>
         Xoxo, Mandy
       </p>
     </div>
@@ -112,18 +130,7 @@ export default function FlipCard({
   if (fullWidth) {
     return (
       <>
-        <style>{`
-          @keyframes hint-wiggle {
-            0%   { transform: rotate(0deg); }
-            2%   { transform: rotate(-2.5deg); }
-            5%   { transform: rotate(2.5deg); }
-            7%   { transform: rotate(-1.5deg); }
-            9%   { transform: rotate(1.5deg); }
-            11%  { transform: rotate(-0.5deg); }
-            13%  { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-          }
-        `}</style>
+        <style>{WIGGLE_CSS}</style>
         <div
           style={{
             animation: flips % 2 === 0 ? "hint-wiggle 4s ease-in-out 1s infinite" : "none",
@@ -140,18 +147,7 @@ export default function FlipCard({
 
   return (
     <>
-      <style>{`
-        @keyframes hint-wiggle {
-          0%   { transform: rotate(0deg); }
-          2%   { transform: rotate(-2.5deg); }
-          5%   { transform: rotate(2.5deg); }
-          7%   { transform: rotate(-1.5deg); }
-          9%   { transform: rotate(1.5deg); }
-          11%  { transform: rotate(-0.5deg); }
-          13%  { transform: rotate(0deg); }
-          100% { transform: rotate(0deg); }
-        }
-      `}</style>
+      <style>{WIGGLE_CSS}</style>
       <div
         style={{
           position: "absolute",
